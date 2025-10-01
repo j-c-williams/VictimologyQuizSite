@@ -1,0 +1,75 @@
+<!-- landing.component.html -->
+<div class="container">
+  <div class="card-wrapper">
+    <div class="card">
+      <!-- Icon/Logo Area -->
+      <div class="icon-container">
+        <div class="icon-box">
+          <svg class="icon" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+              d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z" />
+          </svg>
+        </div>
+      </div>
+
+      <!-- Title -->
+      <h1 class="title">Domestic Violence Quiz</h1>
+
+      <!-- Subtitle -->
+      <p class="subtitle">
+        You will see a series of fact-based questions about domestic violence, if you are not comfortable with this topic, you do not have to continue.
+      </p>
+
+      <!-- Features -->
+      <div class="features">
+        <div class="feature-item">
+          <div class="feature-icon">
+            <svg class="feature-icon-svg" fill="currentColor" viewBox="0 0 20 20">
+              <path fill-rule="evenodd"
+                d="M10 18a8 8 0 100-16 8 8 0 000 16zm1-12a1 1 0 10-2 0v4a1 1 0 00.293.707l2.828 2.829a1 1 0 101.415-1.415L11 9.586V6z"
+                clip-rule="evenodd" />
+            </svg>
+          </div>
+          <span>Timed questions</span>
+        </div>
+        <div class="feature-item">
+          <div class="feature-icon">
+            <svg class="feature-icon-svg" fill="currentColor" viewBox="0 0 20 20">
+              <path d="M9 2a1 1 0 000 2h2a1 1 0 100-2H9z" />
+              <path fill-rule="evenodd"
+                d="M4 5a2 2 0 012-2 3 3 0 003 3h2a3 3 0 003-3 2 2 0 012 2v11a2 2 0 01-2 2H6a2 2 0 01-2-2V5zm9.707 5.707a1 1 0 00-1.414-1.414L9 12.586l-1.293-1.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
+                clip-rule="evenodd" />
+            </svg>
+          </div>
+          <span>Track your score</span>
+        </div>
+        <div class="feature-item">
+          <div class="feature-icon">
+            <svg class="feature-icon-svg" fill="currentColor" viewBox="0 0 20 20">
+              <path fill-rule="evenodd"
+                d="M11.3 1.046A1 1 0 0112 2v5h4a1 1 0 01.82 1.573l-7 10A1 1 0 018 18v-5H4a1 1 0 01-.82-1.573l7-10a1 1 0 011.12-.38z"
+                clip-rule="evenodd" />
+            </svg>
+          </div>
+          <span>20 questions</span>
+        </div>
+      </div>
+
+      <!-- Start Button -->
+      <button (click)="startQuiz()" (mouseenter)="onMouseEnter()" (mouseleave)="onMouseLeave()" class="start-button"
+        [class.hovered]="isHovered">
+        <span class="button-content">
+          Start Quiz
+          <svg class="arrow-icon" [class.arrow-moved]="isHovered" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6" />
+          </svg>
+        </span>
+      </button>
+
+      <!-- Footer hint -->
+      <p class="footer-hint">
+        Takes about 2-3 minutes
+      </p>
+    </div>
+  </div>
+</div>
