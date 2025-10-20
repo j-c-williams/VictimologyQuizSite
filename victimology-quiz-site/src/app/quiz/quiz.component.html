@@ -3,46 +3,45 @@
   <div class="quiz-header">
     <div class="progress-info">
       <span class="question-number">
-        Question {{ (quizState?.currentQuestionIndex ?? 0) + 1 }} of {{ totalQuestions }}
+        Question {{ quizState.currentQuestionIndex + 1 }} of {{ totalQuestions }}
       </span>
       <div class="progress-bar">
-        <div class="progress-fill"
-          [style.width.%]="(((quizState?.currentQuestionIndex ?? 0) + 1) / totalQuestions) * 100">
+        <div class="progress-fill" [style.width.%]="((quizState.currentQuestionIndex + 1) / totalQuestions) * 100">
         </div>
       </div>
     </div>
     <div class="score-display">
-      Score: {{ quizState?.score ?? 0 }}
+      Score: {{ quizState.score }}
     </div>
   </div>
 
   <!-- Timer -->
   <div class="timer-container">
-    <div class="timer" [class.warning]="(quizState?.timeRemaining ?? 0) <= 5">
+    <div class="timer" [class.warning]="quizState.timeRemaining <= 5">
       <svg class="timer-icon" fill="currentColor" viewBox="0 0 20 20">
         <path fill-rule="evenodd"
           d="M10 18a8 8 0 100-16 8 8 0 000 16zm1-12a1 1 0 10-2 0v4a1 1 0 00.293.707l2.828 2.829a1 1 0 101.415-1.415L11 9.586V6z"
           clip-rule="evenodd" />
       </svg>
-      <span class="timer-text">{{ quizState?.timeRemaining ?? 0 }}s</span>
+      <span class="timer-text">{{ quizState.timeRemaining }}s</span>
     </div>
     <div class="phase-indicator">
-      {{ (quizState?.isReading ?? true) ? 'Read the question' : 'Select your answer' }}
+      {{ quizState.isReading ? 'Read the question' : 'Select your answer' }}
     </div>
   </div>
 
   <!-- Question Card -->
   <div class="question-card">
-    <h2 class="question-text">{{ currentQuestion?.questionText }}</h2>
+    <h2 class="question-text">{{ currentQuestion.questionText }}</h2>
 
     <!-- Answers Grid -->
-    <div class="answers-grid" [class.two-answers]="(currentQuestion?.answers?.length ?? 0) === 2">
-      <button *ngFor="let answer of currentQuestion?.answers; let i = index" class="answer-button"
+    <div class="answers-grid" [class.two-answers]="currentQuestion.answers.length === 2">
+      <button *ngFor="let answer of currentQuestion.answers; let i = index" class="answer-button"
         [class]="getAnswerClass(i)" [disabled]="isAnswerDisabled()" (click)="selectAnswer(i)">
         <span class="answer-text">{{ answer.text }}</span>
 
         <!-- Show checkmark or X after answering -->
-        <span class="answer-icon" *ngIf="quizState?.hasAnswered">
+        <span class="answer-icon" *ngIf="quizState.hasAnswered">
           <svg *ngIf="answer.isCorrect" class="icon-correct" fill="currentColor" viewBox="0 0 20 20">
             <path fill-rule="evenodd"
               d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
@@ -60,9 +59,9 @@
   </div>
 
   <!-- Source citation (shown after answering) -->
-  <div class="source-citation" *ngIf="quizState?.hasAnswered && currentQuestion?.source">
+  <div class="source-citation" *ngIf="quizState.hasAnswered && currentQuestion.source">
     <small>
-      Source: <a [href]="currentQuestion?.source" target="_blank">{{ currentQuestion?.source }}</a>
+      Source: <a [href]="currentQuestion.source" target="_blank">{{ currentQuestion.source }}</a>
     </small>
   </div>
 </div>
