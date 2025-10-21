@@ -175,12 +175,6 @@
   opacity: 0.6;
 }
 
-.answer-button:not(:disabled):hover {
-  border-color: #9333ea;
-  background: #f3e8ff;
-  transform: scale(1.02);
-}
-
 .answer-button:not(:disabled):active {
   transform: scale(0.98);
 }
