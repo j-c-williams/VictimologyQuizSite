@@ -10,6 +10,7 @@ export interface QuizState {
   isReading: boolean;
   hasAnswered: boolean;
   isComplete: boolean;
+  correctAnswers: number;
 }
 
 @Injectable({
@@ -24,7 +25,8 @@ export class QuizService {
     timeRemaining: 0,
     isReading: true,
     hasAnswered: false,
-    isComplete: false
+    isComplete: false,
+    correctAnswers: 0
   };
 
   private quizState$ = new BehaviorSubject<QuizState>(this.quizState);
@@ -49,7 +51,8 @@ export class QuizService {
       timeRemaining: this.questions[0].readTime,
       isReading: true,
       hasAnswered: false,
-      isComplete: false
+      isComplete: false,
+      correctAnswers: 0
     };
     this.quizState$.next(this.quizState);
   }
@@ -60,6 +63,7 @@ export class QuizService {
 
     const isCorrect = currentQuestion.answers[answerIndex].isCorrect;
     if (isCorrect) {
+      this.quizState.correctAnswers++;
       const timeBonus = this.quizState.timeRemaining / currentQuestion.answerTime;
       const pointsEarned = Math.round(currentQuestion.pointValue * (1 + timeBonus));
       this.quizState.score += pointsEarned;
@@ -102,6 +106,11 @@ export class QuizService {
 
   getTotalQuestions(): number {
     return this.questions.length;
+  }
+
+  getAllSources(): string[] {
+    const sources = this.questions.map(q => q.source).filter((source): source is string => source !== undefined && source !== '');
+    return [...new Set(sources)];
   }
 
   resetQuiz(): void {

@@ -74,7 +74,6 @@ export class QuizComponent implements OnInit, OnDestroy {
 
   navigateToResults(): void {
     setTimeout(() => {
-      alert(`Quiz Complete! Your score: ${this.quizState?.score}`);
       this.router.navigate(['/results']);
     }, 1000);
   }
