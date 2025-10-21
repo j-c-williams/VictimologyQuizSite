@@ -175,10 +175,6 @@
   opacity: 0.6;
 }
 
-.answer-button:not(:disabled):active {
-  transform: scale(0.98);
-}
-
 /* Answer states after submission */
 .answer-button.correct {
   background: #d1fae5;
