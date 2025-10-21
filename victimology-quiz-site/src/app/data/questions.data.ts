@@ -10,7 +10,7 @@ export const QUIZ_QUESTIONS: Question[] = [
       { text: "47%", isCorrect: true },
       { text: "66%", isCorrect: false }
     ],
-    readTime: 5,
+    readTime: 6,
     answerTime: 20,
     pointValue: 100,
     source: "https://safelives.org.uk/news-views/domestic-abuse-and-suicide-figures/"
@@ -24,7 +24,7 @@ export const QUIZ_QUESTIONS: Question[] = [
       { text: "45.8%", isCorrect: false },
       { text: "52.4%", isCorrect: false }
     ],
-    readTime: 5,
+    readTime: 8,
     answerTime: 20,
     pointValue: 100,
     source: "https://www.usu.edu/uwlp/blog/2023/domestic-violence-among-utah-women-2023"
@@ -38,7 +38,7 @@ export const QUIZ_QUESTIONS: Question[] = [
       { text: "68%", isCorrect: false },
       { text: "95%", isCorrect: true }
     ],
-    readTime: 5,
+    readTime: 6,
     answerTime: 20,
     pointValue: 100,
     source: "https://dvcccpa.org/fast-facts-statistics/#:~:text=Nearly%20half%20of%20all%20women,psychologically%20abuse%20them%20(5)."

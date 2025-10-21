@@ -1,45 +1,41 @@
 <div class="quiz-container" *ngIf="quizState && currentQuestion">
-  <!-- Header with progress and score -->
+  <!-- Combined Header with Question Number, Timer, and Score -->
   <div class="quiz-header">
-    <div class="progress-info">
-      <span class="question-number">
-        Question {{ quizState.currentQuestionIndex + 1 }} of {{ totalQuestions }}
-      </span>
-      <div class="progress-bar">
-        <div class="progress-fill" [style.width.%]="((quizState.currentQuestionIndex + 1) / totalQuestions) * 100">
-        </div>
+    <div class="question-number">
+      Question {{ quizState.currentQuestionIndex + 1 }} of {{ totalQuestions }}
+    </div>
+
+    <div class="timer-section">
+      <div class="timer" [class.warning]="quizState.timeRemaining <= 5">
+        <svg class="timer-icon" fill="currentColor" viewBox="0 0 20 20">
+          <path fill-rule="evenodd"
+            d="M10 18a8 8 0 100-16 8 8 0 000 16zm1-12a1 1 0 10-2 0v4a1 1 0 00.293.707l2.828 2.829a1 1 0 101.415-1.415L11 9.586V6z"
+            clip-rule="evenodd" />
+        </svg>
+        <span class="timer-text">{{ quizState.timeRemaining }}s</span>
+      </div>
+      <div class="phase-indicator">
+        {{ quizState.isReading ? 'Read the question' : 'Select your answer' }}
       </div>
     </div>
+
     <div class="score-display">
       Score: {{ quizState.score }}
     </div>
   </div>
 
-  <!-- Timer -->
-  <div class="timer-container">
-    <div class="timer" [class.warning]="quizState.timeRemaining <= 5">
-      <svg class="timer-icon" fill="currentColor" viewBox="0 0 20 20">
-        <path fill-rule="evenodd"
-          d="M10 18a8 8 0 100-16 8 8 0 000 16zm1-12a1 1 0 10-2 0v4a1 1 0 00.293.707l2.828 2.829a1 1 0 101.415-1.415L11 9.586V6z"
-          clip-rule="evenodd" />
-      </svg>
-      <span class="timer-text">{{ quizState.timeRemaining }}s</span>
-    </div>
-    <div class="phase-indicator">
-      {{ quizState.isReading ? 'Read the question' : 'Select your answer' }}
-    </div>
-  </div>
-
-  <!-- Question Card -->
+  <!-- Question Card (text only) -->
   <div class="question-card">
     <h2 class="question-text">{{ currentQuestion.questionText }}</h2>
-
-    <!-- Answers Grid -->
+  </div>
+  
+  <!-- Answers Card -->
+  <div class="answers-card">
     <div class="answers-grid" [class.two-answers]="currentQuestion.answers.length === 2">
       <button *ngFor="let answer of currentQuestion.answers; let i = index" class="answer-button"
         [class]="getAnswerClass(i)" [disabled]="isAnswerDisabled()" (click)="selectAnswer(i)">
         <span class="answer-text">{{ answer.text }}</span>
-
+  
         <!-- Show checkmark or X after answering -->
         <span class="answer-icon" *ngIf="quizState.hasAnswered">
           <svg *ngIf="answer.isCorrect" class="icon-correct" fill="currentColor" viewBox="0 0 20 20">

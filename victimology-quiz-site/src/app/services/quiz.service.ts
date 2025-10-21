@@ -61,7 +61,7 @@ export class QuizService {
     const isCorrect = currentQuestion.answers[answerIndex].isCorrect;
     if (isCorrect) {
       const timeBonus = this.quizState.timeRemaining / currentQuestion.answerTime;
-      const pointsEarned = Math.round(currentQuestion.pointValue * timeBonus);
+      const pointsEarned = Math.round(currentQuestion.pointValue * (1 + timeBonus));
       this.quizState.score += pointsEarned;
     }
 
